@@ -23,7 +23,7 @@ import {
 } from "@/components/ui/tabs";
 import { Select } from "@/components/ui/select";
 import { User, Target, Globe, Shield, Clock, Trash2 } from 'lucide-react';
-import { Card as CardType, Column as Columns } from "./types";
+import { Card as CardType } from "./types";
 import {
     AlertDialog,
     AlertDialogAction,
@@ -38,7 +38,7 @@ import { toast } from "sonner";
 
 interface LeadDetailDialogProps {
     refreshLeads: () => void;
-    columns: Columns[];
+    columns: Array<{ id: string; title: string }>;
     card: CardType | null;
     isOpen: boolean;
     onClose: () => void;
@@ -47,11 +47,11 @@ interface LeadDetailDialogProps {
 
 }
 
-export const LeadDetailDialog = ({refreshLeads,columns, card, isOpen, onClose, onSave, onDelete }: LeadDetailDialogProps) => {
+export const LeadDetailDialog = ({ refreshLeads, columns, card, isOpen, onClose, onSave, onDelete }: LeadDetailDialogProps) => {
 
-   console.log(columns, 'columns in LeadDetailDialog');
+    console.log(columns, 'columns in LeadDetailDialog');
     const [formData, setFormData] = useState({
-        id:'',
+        id: '',
         title: '',
         description: '',
         priority: 'MEDIUM' as CardType['priority'],
@@ -98,7 +98,7 @@ export const LeadDetailDialog = ({refreshLeads,columns, card, isOpen, onClose, o
     const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
     const [isDeleting, setIsDeleting] = useState(false);
     const [statusLoading, setStatusLoading] = useState<string | null>(null);
-  
+
     // Update form data when card changes
     useEffect(() => {
         if (card) {
@@ -241,20 +241,20 @@ export const LeadDetailDialog = ({refreshLeads,columns, card, isOpen, onClose, o
         setIsDeleteDialogOpen(false);
     };
 
-   
 
-       const {handleLeadStatusChange} =createLeadStatusHandler({
-          leadId: '', // Will be set when called
+
+    const { handleLeadStatusChange } = createLeadStatusHandler({
+        leadId: '', // Will be set when called
         status: 'qualified', // Will be overridden
         columns, // You'll need this as a prop
         formData, // The current lead data
         refreshLeads, // You'll need this as a prop
-        onClose: () => {}, // Empty function since table doesn't need to close
+        onClose: () => { }, // Empty function since table doesn't need to close
         setStatusLoading
     });
 
     if (!card) return null;
-  
+
     return (
         <Dialog open={isOpen} onOpenChange={onClose}>
             <DialogContent className="sm:max-w-4xl max-h-[90vh] overflow-y-auto">
@@ -693,35 +693,35 @@ export const LeadDetailDialog = ({refreshLeads,columns, card, isOpen, onClose, o
                                 </Button>
                             )}
                         </div>
-                     
-                    <div className="flex gap-2">
-                        <Button 
-                            type="button" 
-                            variant="destructive" 
-                            onClick={() => handleLeadStatusChange(formData.id, 'lost')}
-                            disabled={statusLoading !== null }
-                            className={statusLoading !== null  ? 'cursor-not-allowed' : 'cursor-pointer'}
-                        >
-                            {statusLoading === 'lost' ? 'Processing...' : 'Loser'}
-                        </Button>
-                        <Button 
-                            type="button" 
-                            variant="outline" 
-                            onClick={() => handleLeadStatusChange(formData.id, 'qualified')}
-                            disabled={statusLoading !== null }
-                            className={statusLoading !== null  ? 'cursor-not-allowed' : 'cursor-pointer'}
-                        >
-                            {statusLoading === 'qualified' ? 'Processing...' : 'Qualified'}
-                        </Button>
-                        <Button 
-                            type="button" 
-                            className={`bg-green-600 hover:bg-green-700 text-white ${statusLoading !== null  ? 'cursor-not-allowed' : 'cursor-pointer'}`}
-                            onClick={() => handleLeadStatusChange(formData.id, 'won')}
-                            disabled={statusLoading !== null }
-                        >
-                            {statusLoading === 'won' ? 'Processing...' : 'Winner'}
-                        </Button>
-                    </div>
+
+                        <div className="flex gap-2">
+                            <Button
+                                type="button"
+                                variant="destructive"
+                                onClick={() => handleLeadStatusChange(formData.id, 'lost')}
+                                disabled={statusLoading !== null}
+                                className={statusLoading !== null ? 'cursor-not-allowed' : 'cursor-pointer'}
+                            >
+                                {statusLoading === 'lost' ? 'Processing...' : 'Loser'}
+                            </Button>
+                            <Button
+                                type="button"
+                                variant="outline"
+                                onClick={() => handleLeadStatusChange(formData.id, 'qualified')}
+                                disabled={statusLoading !== null}
+                                className={statusLoading !== null ? 'cursor-not-allowed' : 'cursor-pointer'}
+                            >
+                                {statusLoading === 'qualified' ? 'Processing...' : 'Qualified'}
+                            </Button>
+                            <Button
+                                type="button"
+                                className={`bg-green-600 hover:bg-green-700 text-white ${statusLoading !== null ? 'cursor-not-allowed' : 'cursor-pointer'}`}
+                                onClick={() => handleLeadStatusChange(formData.id, 'won')}
+                                disabled={statusLoading !== null}
+                            >
+                                {statusLoading === 'won' ? 'Processing...' : 'Winner'}
+                            </Button>
+                        </div>
                     </div>
                 </form>
 

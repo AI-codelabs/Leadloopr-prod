@@ -1,16 +1,28 @@
-import { prisma } from "@repo/database";
+"use client"
+import Header from '@/components/marketing/components/Header';
+import Hero from '@/components/marketing/components/Hero';
+import TrustedBy from '@/components/marketing/components/TrustedBy';
+import Features from '@/components/marketing/components/Features';
+import Testimonials from '@/components/marketing/components/Testimonials';
+import Pricing from '@/components/marketing/components/Pricing';
+import CTA from '@/components/marketing/components/CTA';
+import Footer from '@/components/marketing/components/Footer';
 
-export default function Home() {
+const LandingPage = () => {
   return (
-    <main className="min-h-screen flex items-center justify-center bg-white">
-      <div className="p-8 bg-white rounded-lg shadow-md">
-        <h1 className="text-3xl font-bold text-gray-800 mb-4">
-          Welcome to LeadLoopr
-        </h1>
-        <p className="text-gray-600">
-          TailwindCSS is now properly configured! 🎉
-        </p>
-      </div>
-    </main>
+    <div className="min-h-screen font-inter">
+      <Header />
+      <main>
+        <Hero />
+        <TrustedBy />
+        <Features />
+        <Testimonials />
+        <Pricing />
+        <CTA />
+      </main>
+      <Footer />
+    </div>
   );
-}
+};
+
+export default LandingPage;

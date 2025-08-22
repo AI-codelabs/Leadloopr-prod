@@ -23,7 +23,7 @@ const priorityConfig = {
 };
 
 export const LeadCard = ({ card, onClick }: LeadCardProps) => {
-   
+
     const { attributes, listeners, setNodeRef, transform, isDragging } = useDraggable({
         id: card.id,
         data: {
@@ -53,21 +53,21 @@ export const LeadCard = ({ card, onClick }: LeadCardProps) => {
         }
     };
 
-function getSyncCountdown(createdAtString?: string): string {
-  if (!createdAtString) return "No date provided";
+    function getSyncCountdown(createdAtString?: string): string {
+        if (!createdAtString) return "No date provided";
 
-  const createdAt = new Date(createdAtString);
-  const deadline = new Date(createdAt.getTime() + 90 * 24 * 60 * 60 * 1000);
-  const now = new Date();
-  const diffInMs = deadline.getTime() - now.getTime();
-  const daysLeft = Math.ceil(diffInMs / (1000 * 60 * 60 * 24));
+        const createdAt = new Date(createdAtString);
+        const deadline = new Date(createdAt.getTime() + 90 * 24 * 60 * 60 * 1000);
+        const now = new Date();
+        const diffInMs = deadline.getTime() - now.getTime();
+        const daysLeft = Math.ceil(diffInMs / (1000 * 60 * 60 * 24));
 
-  if (isNaN(daysLeft)) return "Invalid date";
+        if (isNaN(daysLeft)) return "Invalid date";
 
-  return daysLeft > 0
-    ? `${daysLeft} day${daysLeft === 1 ? "" : "s"} left`
-    : "Sync expired";
-}
+        return daysLeft > 0
+            ? `${daysLeft} day${daysLeft === 1 ? "" : "s"} left`
+            : "Sync expired";
+    }
 
 
 
@@ -100,21 +100,21 @@ function getSyncCountdown(createdAtString?: string): string {
         );
     };
 
-    const getIcon = (gclid?: String,fbclid?:String) => {
-        
-            if(gclid){
-                return <img src={integrations?.outgoing[0].icon} alt="Google Icon" className="w-4 h-4 mr-2" />
-            } else if(fbclid){
-                return <img src={integrations?.outgoing[2].icon} alt="Facebook Icon" className="w-4 h-4 mr-2" />
-            } else {
-                return <img src={integrations?.outgoing[3].icon} alt="Lead Icon" className="w-4 h-4 mr-2" />
-            }
-        
+    const getIcon = (gclid?: String, fbclid?: String) => {
+
+        if (gclid) {
+            return <img src={integrations?.outgoing[0].icon} alt="Google Icon" className="w-4 h-4 mr-2" />
+        } else if (fbclid) {
+            return <img src={integrations?.outgoing[2].icon} alt="Facebook Icon" className="w-4 h-4 mr-2" />
+        } else {
+            return <img src={integrations?.outgoing[3].icon} alt="Lead Icon" className="w-4 h-4 mr-2" />
+        }
+
     }
 
 
- console.log("Rendering LeadCard for:", card.stageName);
-    
+    console.log("Rendering LeadCard for:", card.stageName);
+
 
     return (
         <Card
@@ -138,7 +138,7 @@ function getSyncCountdown(createdAtString?: string): string {
                     >
                         {card.priority}
                     </Badge>
-                    
+
                     {card.tags && card.tags.length > 0 && (
                         <div className="flex flex-wrap gap-1 justify-end">
                             {card.tags.slice(0, 2).map((tag, index) => (
@@ -171,28 +171,28 @@ function getSyncCountdown(createdAtString?: string): string {
                     <div className="text-xs text-muted-foreground truncate">
                         {card.phone || "No phone"}
                     </div>
-                    
-                     
+
+
                 </div>
-                    <div className="flex items-end justify-end">
-                       { getIcon(card.gclid,card.fbclid)}
-                    </div>
+                <div className="flex items-end justify-end">
+                    {getIcon(card.gclid, card.fbclid)}
+                </div>
                 {/* Value and Timestamp */}
                 <div className="flex justify-between items-center">
-                  
+
                     {/* <div className="text-xs font-medium text-green-600">
                         {card.value ? `€${card.value}` : "No value set"}
                     </div> */}
                     <div className="text-xs text-muted-foreground">
                         {formatTimeAgo(card.createdAt)}
                     </div>
-{["Proposal"].includes(card?.stageName) && card?.createdAt && (
-  <div className="text-xs text-muted-foreground">
-    {getSyncCountdown(card.createdAt)}
-  </div>
-)}
+                    {(card?.stageName ? ["Proposal"].includes(card.stageName) : false) && card?.createdAt && (
+                        <div className="text-xs text-muted-foreground">
+                            {getSyncCountdown(card.createdAt)}
+                        </div>
+                    )}
 
-                     
+
                 </div>
             </CardContent>
         </Card>
