@@ -247,16 +247,16 @@ export const GTMModal = ({ isOpen, onClose }: GTMModalProps) => {
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2">
-            <img 
-              src="https://cdn.simpleicons.org/googletagmanager" 
-              alt="GTM" 
+            <img
+              src="https://cdn.simpleicons.org/googletagmanager"
+              alt="GTM"
               className="w-6 h-6"
             />
             Add Google Tag Manager Integration
           </DialogTitle>
           <button
             onClick={onClose}
-            //className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none"
+          //className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none"
           >
             {/* <X className="h-4 w-4" /> */}
           </button>
@@ -264,10 +264,10 @@ export const GTMModal = ({ isOpen, onClose }: GTMModalProps) => {
 
         <div className="space-y-4">
           <p className="text-sm text-gray-600">
-            Download our step-by-step setup guide to implement our Google Tag Manager template. This guide will help you 
+            Download our step-by-step setup guide to implement our Google Tag Manager template. This guide will help you
             track conversions, leads, and user interactions efficiently.{' '}
-            <a 
-              href="#" 
+            <a
+              href="#"
               className="text-blue-600 hover:underline"
               onClick={(e) => e.preventDefault()}
             >
@@ -305,7 +305,7 @@ export const GTMModal = ({ isOpen, onClose }: GTMModalProps) => {
                 {copied && <span className="ml-1 text-xs">Copied!</span>}
               </Button>
             </div>
-            <p className="text-xs text-gray-500">
+            <p className="text-xs text-muted-foreground">
               This ID will be used in the GTM template to send data to your Lead Loopr account.
             </p>
           </div>

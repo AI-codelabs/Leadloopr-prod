@@ -1,11 +1,12 @@
 'use client'
 
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
-import { Plus } from "lucide-react";
+import { Plus, Users } from "lucide-react";
 import { InviteMemberModal } from "./InviteMemberModal";
 
 interface TeamMember {
@@ -51,141 +52,178 @@ export function TeamMembersCard() {
 
     if (loading) {
         return (
-            <Card>
-                <CardHeader>
-                    <div className="flex items-center justify-between">
-                        <div>
-                            <CardTitle>Team Members</CardTitle>
-                            <CardDescription>Manage who has access to this organization.</CardDescription>
+            <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+            >
+                <Card className="glass-card h-fit">
+                    <CardHeader>
+                        <div className="flex items-center justify-between">
+                            <div>
+                                <CardTitle className="flex items-center gap-2">
+                                    <Users className="h-5 w-5" />
+                                    Team Members
+                                </CardTitle>
+                                <CardDescription>
+                                    Manage your team and their permissions
+                                </CardDescription>
+                            </div>
+                            <Button className="bg-gradient-primary hover:opacity-90 glow" disabled>
+                                <Plus className="h-4 w-4 mr-2" />
+                                Add Member
+                            </Button>
                         </div>
-                        <Button className="bg-blue-600 hover:bg-blue-700 text-white" disabled>
-                            <Plus className="h-4 w-4 mr-2" />
-                            Add Member
-                        </Button>
-                    </div>
-                </CardHeader>
-                <CardContent>
-                    <div className="space-y-4">
-                        <div className="animate-pulse">
-                            <div className="h-4 bg-gray-200 rounded w-24 mb-4"></div>
-                            {[1, 2, 3].map((i) => (
-                                <div key={i} className="flex items-center justify-between p-3 border rounded-lg">
-                                    <div className="flex items-center gap-3">
-                                        <div className="h-8 w-8 bg-gray-200 rounded-full"></div>
-                                        <div>
-                                            <div className="h-4 bg-gray-200 rounded w-32 mb-1"></div>
-                                            <div className="h-3 bg-gray-200 rounded w-40"></div>
+                    </CardHeader>
+                    <CardContent>
+                        <div className="space-y-4">
+                            <div className="animate-pulse">
+                                <div className="h-4 bg-muted rounded w-24 mb-4"></div>
+                                {[1, 2, 3].map((i) => (
+                                    <div key={i} className="flex items-center justify-between p-4 border rounded-lg glass">
+                                        <div className="flex items-center gap-3">
+                                            <div className="h-8 w-8 bg-muted rounded-full"></div>
+                                            <div>
+                                                <div className="h-4 bg-muted rounded w-32 mb-1"></div>
+                                                <div className="h-3 bg-muted rounded w-40"></div>
+                                            </div>
                                         </div>
+                                        <div className="h-6 bg-muted rounded w-16"></div>
                                     </div>
-                                    <div className="h-6 bg-gray-200 rounded w-16"></div>
-                                </div>
-                            ))}
+                                ))}
+                            </div>
                         </div>
-                    </div>
-                </CardContent>
-            </Card>
+                    </CardContent>
+                </Card>
+            </motion.div>
         );
     }
 
     if (error) {
         return (
-            <Card>
-                <CardHeader>
-                    <div className="flex items-center justify-between">
-                        <div>
-                            <CardTitle>Team Members</CardTitle>
-                            <CardDescription>Manage who has access to this organization.</CardDescription>
+            <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+            >
+                <Card className="glass-card h-fit">
+                    <CardHeader>
+                        <div className="flex items-center justify-between">
+                            <div>
+                                <CardTitle className="flex items-center gap-2">
+                                    <Users className="h-5 w-5" />
+                                    Team Members
+                                </CardTitle>
+                                <CardDescription>
+                                    Manage your team and their permissions
+                                </CardDescription>
+                            </div>
+                            <Button className="bg-gradient-primary hover:opacity-90 glow">
+                                <Plus className="h-4 w-4 mr-2" />
+                                Add Member
+                            </Button>
                         </div>
-                        <Button className="bg-blue-600 hover:bg-blue-700 text-white">
-                            <Plus className="h-4 w-4 mr-2" />
-                            Add Member
-                        </Button>
-                    </div>
-                </CardHeader>
-                <CardContent>
-                    <div className="text-center py-8">
-                        <p className="text-red-600 mb-4">Failed to load team members</p>
-                        <Button
-                            variant="outline"
-                            onClick={() => window.location.reload()}
-                        >
-                            Try Again
-                        </Button>
-                    </div>
-                </CardContent>
-            </Card>
+                    </CardHeader>
+                    <CardContent>
+                        <div className="text-center py-8">
+                            <p className="text-destructive mb-4">Failed to load team members</p>
+                            <Button
+                                variant="outline"
+                                onClick={() => window.location.reload()}
+                            >
+                                Try Again
+                            </Button>
+                        </div>
+                    </CardContent>
+                </Card>
+            </motion.div>
         );
     }
 
     return (
         <>
-            <Card>
-                <CardHeader>
-                    <div className="flex items-center justify-between">
-                        <div>
-                            <CardTitle>Team Members</CardTitle>
-                            <CardDescription>Manage who has access to this organization.</CardDescription>
-                        </div>
-                        <Button
-                            className="bg-blue-600 hover:bg-blue-700 text-white"
-                            onClick={() => setIsInviteModalOpen(true)}
-                        >
-                            <Plus className="h-4 w-4 mr-2" />
-                            Add Member
-                        </Button>
-                    </div>
-                </CardHeader>
-                <CardContent>
-                    <div className="space-y-4">
-                        <p className="text-sm text-gray-600">{members.length} of 5 members</p>
-                        {members.length === 0 ? (
-                            <div className="text-center py-8 text-gray-500">
-                                <p>No team members found</p>
-                                <Button
-                                    variant="outline"
-                                    className="mt-4"
-                                    onClick={() => setIsInviteModalOpen(true)}
-                                >
-                                    <Plus className="h-4 w-4 mr-2" />
-                                    Invite your first member
-                                </Button>
+            <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+            >
+                <Card className="glass-card h-fit">
+                    <CardHeader>
+                        <div className="flex items-center justify-between">
+                            <div>
+                                <CardTitle className="flex items-center gap-2">
+                                    <Users className="h-5 w-5" />
+                                    Team Members
+                                </CardTitle>
+                                <CardDescription>
+                                    Manage your team and their permissions
+                                </CardDescription>
                             </div>
-                        ) : (
-                            members.map((member) => (
-                                <div key={member.id} className="flex items-center justify-between p-3 border rounded-lg">
-                                    <div className="flex items-center gap-3">
-                                        <Avatar className="h-8 w-8">
-                                            <AvatarImage
-                                                src={member.imageUrl || undefined}
-                                                alt={member.name}
-                                            />
-                                            <AvatarFallback className="bg-gray-600 text-white text-sm">
-                                                {member.initials}
-                                            </AvatarFallback>
-                                        </Avatar>
-                                        <div>
-                                            <p className="font-medium">{member.name}</p>
-                                            <p className="text-sm text-gray-600">{member.email}</p>
-                                        </div>
-                                    </div>
-                                    <Badge
-                                        variant={member.role === "Admin" ? "secondary" : "secondary"}
-                                        className={
-                                            member.role === "Admin"
-                                                ? "bg-blue-100 text-blue-800 border-blue-200"
-                                                : member.role === "Guest"
-                                                    ? "bg-gray-100 text-gray-800 border-gray-200"
-                                                    : "bg-green-100 text-green-800 border-green-200"
-                                        }
+                            <Button
+                                className="bg-gradient-primary hover:opacity-90 glow"
+                                onClick={() => setIsInviteModalOpen(true)}
+                            >
+                                <Plus className="h-4 w-4 mr-2" />
+                                Add Member
+                            </Button>
+                        </div>
+                    </CardHeader>
+                    <CardContent>
+                        <div className="space-y-4">
+                            {members.length === 0 ? (
+                                <div className="text-center py-8 text-muted-foreground">
+                                    <p>No team members found</p>
+                                    <Button
+                                        variant="outline"
+                                        className="mt-4 glass"
+                                        onClick={() => setIsInviteModalOpen(true)}
                                     >
-                                        {member.role}
-                                    </Badge>
+                                        <Plus className="h-4 w-4 mr-2" />
+                                        Invite your first member
+                                    </Button>
                                 </div>
-                            ))
-                        )}
-                    </div>
-                </CardContent>
-            </Card>
+                            ) : (
+                                members.map((member, index) => (
+                                    <motion.div
+                                        key={member.id}
+                                        initial={{ opacity: 0, x: -20 }}
+                                        animate={{ opacity: 1, x: 0 }}
+                                        transition={{ duration: 0.3, delay: index * 0.1 }}
+                                        className="flex items-center justify-between p-4 rounded-lg border border-border/50 glass"
+                                    >
+                                        <div className="flex items-center gap-3">
+                                            <Avatar>
+                                                <AvatarImage
+                                                    src={member.imageUrl || undefined}
+                                                    alt={member.name}
+                                                />
+                                                <AvatarFallback className="bg-gradient-primary text-primary-foreground">
+                                                    {member.initials}
+                                                </AvatarFallback>
+                                            </Avatar>
+                                            <div>
+                                                <p className="font-medium">{member.name}</p>
+                                                <p className="text-sm text-muted-foreground">{member.email}</p>
+                                            </div>
+                                        </div>
+                                        <div className="flex items-center gap-2">
+                                            <Badge
+                                                variant={member.role === 'Admin' ? 'default' : 'secondary'}
+                                                className="text-xs"
+                                            >
+                                                {member.role}
+                                            </Badge>
+                                            <Badge variant="outline" className="text-xs">
+                                                Active
+                                            </Badge>
+                                        </div>
+                                    </motion.div>
+                                ))
+                            )}
+                        </div>
+                    </CardContent>
+                </Card>
+            </motion.div>
 
             <InviteMemberModal
                 open={isInviteModalOpen}

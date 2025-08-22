@@ -139,10 +139,10 @@ export default function SelectFacebookAdsAccount() {
           </Button>
 
           <div className="text-center">
-            <h1 className="text-3xl font-bold text-gray-900 mb-2">
+            <h1 className="text-3xl font-bold text-foreground mb-2">
               Select Facebook Ad Account
             </h1>
-            <p className="text-gray-600 mb-8">
+            <p className="text-muted-foreground mb-8">
               Choose which Facebook Ad account you want to connect for conversion tracking and campaign management
             </p>
           </div>
@@ -165,25 +165,24 @@ export default function SelectFacebookAdsAccount() {
               {accounts.map((account) => (
                 <Card
                   key={account.id}
-                  className={`cursor-pointer transition-all duration-200 hover:shadow-md ${
-                    selectedAccount === account.id
-                      ? 'ring-2 ring-blue-500 border-blue-500 bg-blue-50'
-                      : 'border-gray-200 hover:border-gray-300'
-                  } ${account.account_status !== 1 ? 'opacity-75' : ''}`}
+                  className={`cursor-pointer transition-all duration-200 hover:shadow-md ${selectedAccount === account.id
+                      ? 'ring-2 ring-blue-500 border-blue-500 bg-accent'
+                      : 'border-border hover:border-border/80'
+                    } ${account.account_status !== 1 ? 'opacity-75' : ''}`}
                   onClick={() => account.account_status === 1 && handleAccountSelect(account.id)}
                 >
                   <CardContent className="p-6">
                     <div className="flex items-center justify-between">
                       <div className="flex-1">
                         <div className="flex items-center gap-3 mb-2">
-                          <h3 className="text-lg font-semibold text-gray-900">
+                          <h3 className="text-lg font-semibold text-foreground">
                             {account.name}
                           </h3>
                           {selectedAccount === account.id && (
                             <CheckCircle className="w-5 h-5 text-blue-500" />
                           )}
                         </div>
-                        <div className="flex items-center gap-4 text-sm text-gray-600 mb-2">
+                        <div className="flex items-center gap-4 text-sm text-muted-foreground mb-2">
                           <div>
                             <span className="font-medium">Ad Account ID:</span> {account.id}
                           </div>
@@ -226,12 +225,12 @@ export default function SelectFacebookAdsAccount() {
               </div>
             )}
 
-            <div className="flex justify-between items-center bg-white p-6 rounded-lg border">
+            <div className="flex justify-between items-center bg-card p-6 rounded-lg border">
               <div>
-                <h3 className="font-semibold text-gray-900 mb-1">
+                <h3 className="font-semibold text-foreground mb-1">
                   {selectedAccount ? 'Account Selected' : 'Select an Account'}
                 </h3>
-                <p className="text-sm text-gray-600">
+                <p className="text-sm text-muted-foreground">
                   {selectedAccount
                     ? `You've selected ad account ${selectedAccount}`
                     : 'Choose an active Facebook Ad account to continue'}

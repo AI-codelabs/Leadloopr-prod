@@ -320,7 +320,7 @@ export function LeadsDataTable({ data, columns, refreshLeads, onRowClick }: Lead
 
             // Run all syncs
             const results = await Promise.all(syncPromises);
-            
+
             // Filter out GA4 "not configured" results from success/failure counts
             const relevantResults = results.filter(r => r.error !== 'not_configured');
             const successfulSyncs = relevantResults.filter((r) => r.success);
@@ -429,7 +429,7 @@ export function LeadsDataTable({ data, columns, refreshLeads, onRowClick }: Lead
                     );
                 },
             },
-            {  
+            {
                 accessorKey: "stage.name",
                 header: "Status",
                 cell: ({ row }) => <StatusBadge label={row.original.stage?.name || "No Stage"} color={row.original.stage?.color || "bg-gray-400 text-white"} />,
@@ -437,12 +437,12 @@ export function LeadsDataTable({ data, columns, refreshLeads, onRowClick }: Lead
             {
                 accessorKey: "email",
                 header: "E-mail",
-                cell: ({ row }) => <span className="text-xs text-gray-600">{row.original.email || "-"}</span>,
+                cell: ({ row }) => <span className="text-xs text-muted-foreground">{row.original.email || "-"}</span>,
             },
             {
                 accessorKey: "phone",
                 header: "Phone",
-                cell: ({ row }) => <span className="text-xs text-gray-600">{row.original.phone || "-"}</span>,
+                cell: ({ row }) => <span className="text-xs text-muted-foreground">{row.original.phone || "-"}</span>,
             },
             {
                 accessorKey: "tags",
@@ -465,7 +465,7 @@ export function LeadsDataTable({ data, columns, refreshLeads, onRowClick }: Lead
                 cell: ({ row }) => {
                     const value = row.original.value;
                     return (
-                        <div className="text-right text-xs text-gray-600">
+                        <div className="text-right text-xs text-muted-foreground">
                             {value ? `€${value.toLocaleString("de-DE")}` : "-"}
                         </div>
                     );
@@ -474,7 +474,7 @@ export function LeadsDataTable({ data, columns, refreshLeads, onRowClick }: Lead
             {
                 accessorKey: "createdAt",
                 header: () => <div className="text-right">Received</div>,
-                cell: ({ row }) => <div className="text-right text-xs text-gray-600">{formatDate(row.original.createdAt)}</div>,
+                cell: ({ row }) => <div className="text-right text-xs text-muted-foreground">{formatDate(row.original.createdAt)}</div>,
             },
             {
                 id: "actions",
@@ -482,7 +482,7 @@ export function LeadsDataTable({ data, columns, refreshLeads, onRowClick }: Lead
                 cell: ({ row }) => {
                     const lead = row.original;
                     const isLoading = statusLoading === `${lead.id}-lost` || statusLoading === `${lead.id}-qualified` || statusLoading === `${lead.id}-won`;
-                    
+
                     return (
                         <div className="flex items-center justify-end gap-2">
                             <Button
@@ -562,7 +562,7 @@ export function LeadsDataTable({ data, columns, refreshLeads, onRowClick }: Lead
                 </div>
                 <DropdownMenu>
                     <DropdownMenuTrigger asChild>
-                        <Button variant="outline" className="border border-gray-300 rounded-lg px-3 py-2 bg-white text-sm font-medium flex items-center gap-2">
+                        <Button variant="outline" className="border border-border rounded-lg px-3 py-2 bg-background text-sm font-medium flex items-center gap-2">
                             Sort
                             <ChevronDown className="w-4 h-4" />
                         </Button>
@@ -580,7 +580,7 @@ export function LeadsDataTable({ data, columns, refreshLeads, onRowClick }: Lead
                 </DropdownMenu>
                 <DropdownMenu>
                     <DropdownMenuTrigger asChild>
-                        <Button variant="outline" className="border border-gray-300 rounded-lg px-3 py-2 bg-white text-sm font-medium flex items-center gap-2">
+                        <Button variant="outline" className="border border-border rounded-lg px-3 py-2 bg-background text-sm font-medium flex items-center gap-2">
                             Settings
                             <ChevronDown className="w-4 h-4" />
                         </Button>

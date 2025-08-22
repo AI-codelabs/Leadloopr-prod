@@ -220,6 +220,15 @@
         animation: fadeInRight 0.8s ease-out;
     }
 
+    /* Marquee animations for carousel */
+    .animate-marquee {
+        animation: marquee var(--duration, 40s) linear infinite;
+    }
+
+    .animate-marquee-vertical {
+        animation: marquee-vertical var(--duration, 40s) linear infinite;
+    }
+
     @keyframes fadeIn {
         from {
             opacity: 0;
@@ -253,6 +262,24 @@
         to {
             opacity: 1;
             transform: translateX(0);
+        }
+    }
+
+    @keyframes marquee {
+        from {
+            transform: translateX(0);
+        }
+        to {
+            transform: translateX(calc(-100% - var(--gap, 1rem)));
+        }
+    }
+
+    @keyframes marquee-vertical {
+        from {
+            transform: translateY(0);
+        }
+        to {
+            transform: translateY(calc(-100% - var(--gap, 1rem)));
         }
     }
 }

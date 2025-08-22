@@ -23,11 +23,11 @@ export function OrganizationProfileModal({ open, onOpenChange }: OrganizationPro
             className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm"
             onClick={handleOverlayClick}
         >
-            <div className="relative w-full max-w-3xl md:max-w-4xl h-[90vh] bg-white rounded-xl shadow-2xl border border-gray-200 flex flex-col overflow-hidden">
+            <div className="relative w-full max-w-3xl md:max-w-4xl h-[90vh] bg-card rounded-xl shadow-2xl border border-border flex flex-col overflow-hidden">
                 {/* Close button */}
                 <button
                     onClick={() => onOpenChange(false)}
-                    className="absolute top-4 right-4 z-10 p-2 rounded-full bg-white/80 hover:bg-white shadow border border-gray-200 transition"
+                    className="absolute top-4 right-4 z-10 p-2 rounded-full bg-card/80 hover:bg-card shadow border border-border transition"
                     aria-label="Close organization settings"
                 >
                     <X className="h-5 w-5 text-gray-700" />

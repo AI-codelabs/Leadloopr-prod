@@ -5,6 +5,7 @@ import { AccountInformationCard } from '@/components/account/AccountInformationC
 import { BillingCard } from '@/components/account/BillingCard'
 import { TeamMembersCard } from '@/components/account/TeamMembersCard'
 
+
 export default async function AccountPage() {
     const { userId } = await auth()
 
@@ -20,25 +21,25 @@ export default async function AccountPage() {
     }
 
     return (
-        <div className="min-h-screen bg-white p-6">
-            <div className="max-w-7xl mx-auto space-y-6">
-                {/* Header */}
-                <div className="flex items-center justify-between">
-                    <h1 className="text-3xl font-bold text-gray-900">Account settings</h1>
+        <div className="min-h-screen bg-background p-6">
+            <div className="max-w-7xl mx-auto">
+                <div className="flex items-center justify-between mb-6">
+                    <h1 className="text-2xl font-bold text-foreground">Account</h1>
                 </div>
 
-                <div className="flex gap-6">
-                    {/* Account Information - Fixed width */}
-                    <div className="w-80 flex-shrink-0">
-                        <AccountInformationCard user={user} />
+                {/* Account Information Section */}
+                <div className="mb-8">
+                    <AccountInformationCard user={user} />
+                </div>
+
+                <div className="grid gap-8 lg:grid-cols-2">
+                    {/* Team Members Section */}
+                    <div>
+                        <TeamMembersCard />
                     </div>
 
-                    {/* Organization Management & Billing - Flexible width */}
-                    <div className="flex-1 space-y-6">
-                        {/* Team Members Management */}
-                        <TeamMembersCard />
-
-                        {/* Billing Section */}
+                    {/* Billing Section */}
+                    <div>
                         <BillingCard />
                     </div>
                 </div>

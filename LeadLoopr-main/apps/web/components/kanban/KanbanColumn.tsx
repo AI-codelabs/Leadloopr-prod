@@ -115,7 +115,7 @@ export const KanbanColumn: React.FC<KanbanColumnProps> = ({
         <div className="flex-shrink-0 w-80">
             <div
                 ref={setNodeRef}
-                className={`border rounded-[24px] p-4 h-full transition-colors ${isOver ? 'bg-blue-50 border-blue-300' : 'border-border'}`}
+                className={`border rounded-[24px] p-4 h-full transition-colors ${isOver ? 'bg-accent border-blue-300' : 'border-border'}`}
                 style={{
                     background: getColumnStyle(column.color).bg,
                     boxShadow: getColumnStyle(column.color).shadow,
@@ -191,7 +191,7 @@ export const KanbanColumn: React.FC<KanbanColumnProps> = ({
 
                     {/* Add Lead Card - Always last */}
                     <div
-                        className="bg-card border-2 border-dashed border-border rounded-lg p-4 hover:border-blue-300 hover:bg-blue-50/50 transition-colors cursor-pointer"
+                        className="bg-card border-2 border-dashed border-border rounded-lg p-4 hover:border-blue-300 hover:bg-accent/50 transition-colors cursor-pointer"
                         onClick={() => onAddLead?.(column.id, column.title)}
                     >
                         <div className="flex items-center justify-center text-muted-foreground">

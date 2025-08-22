@@ -49,14 +49,14 @@ export const IntegrationCard = ({ integration }: IntegrationCardProps) => {
   const [isGTMModalOpen, setIsGTMModalOpen] = useState(false); // New state for GTM modal
 
   // Updated to include Microsoft Ads as OAuth-based, but exclude GTM
-  const isOAuthBasedIntegration = integration.id === 'google-ads' || 
-                                   integration.id === 'meta-ads' || 
-                                   integration.id === 'google-analytics' ||
-                                   integration.id === 'microsoft-ads';
-  
+  const isOAuthBasedIntegration = integration.id === 'google-ads' ||
+    integration.id === 'meta-ads' ||
+    integration.id === 'google-analytics' ||
+    integration.id === 'microsoft-ads';
+
   // Special handling for GTM
   const isGTMIntegration = integration.id === 'google-tag-manager';
-  
+
   console.log(isOAuthBasedIntegration ? `🔗 OAuth-based integration: ${integration.name}` : `📋 Non-OAuth integration: ${integration.name}`);
 
   useEffect(() => {
@@ -240,10 +240,10 @@ export const IntegrationCard = ({ integration }: IntegrationCardProps) => {
 
   const getButtonContent = () => {
     if (isConnecting) return (<><Loader2 className="w-4 h-4 mr-1 animate-spin" /> Connecting...</>);
-    
+
     // Special text for GTM
     if (isGTMIntegration) return "Connect";
-    
+
     switch (status) {
       case 'loading': return (<><Loader2 className="w-4 h-4 mr-1 animate-spin" /> Loading...</>);
       case 'connected': return (<><Check className="w-4 h-4 mr-1" /> Connected</>);
@@ -300,7 +300,7 @@ export const IntegrationCard = ({ integration }: IntegrationCardProps) => {
         <CardContent className="p-6">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
-              <div className="w-12 h-12 flex items-center justify-center bg-white rounded-lg overflow-hidden">
+              <div className="w-12 h-12 flex items-center justify-center bg-card rounded-lg overflow-hidden">
                 <img
                   src={integration.icon}
                   alt={integration.name}
@@ -316,8 +316,8 @@ export const IntegrationCard = ({ integration }: IntegrationCardProps) => {
                 </div>
               </div>
               <div className="flex-1">
-                <h3 className="font-semibold text-gray-900 mb-1">{integration.name}</h3>
-                <p className="text-sm text-gray-500 leading-relaxed">{integration.description}</p>
+                <h3 className="font-semibold text-foreground mb-1">{integration.name}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">{integration.description}</p>
                 {(status === 'expired' || status === 'inactive' || status === 'error' || status === 'needs_configuration' || status === 'misconfigured') && (
                   <p className={`text-xs mt-1 ${status === 'error' ? 'text-red-600' : 'text-orange-600'}`}>
                     {getStatusMessage()}
@@ -336,16 +336,16 @@ export const IntegrationCard = ({ integration }: IntegrationCardProps) => {
                 {getButtonContent()}
               </Button>
               {status === 'connected' && !isOAuthBasedIntegration && !isGTMIntegration && (
-                 <Button
-                onClick={handleDisconnect}
-                variant="ghost"
-                size="sm"
-                className="text-gray-500 hover:text-red-600"
-              >
-                Disconnect
-              </Button>
+                <Button
+                  onClick={handleDisconnect}
+                  variant="ghost"
+                  size="sm"
+                  className="text-muted-foreground hover:text-red-600"
+                >
+                  Disconnect
+                </Button>
               )}
-             
+
             </div>
           </div>
         </CardContent>
@@ -353,9 +353,9 @@ export const IntegrationCard = ({ integration }: IntegrationCardProps) => {
 
       {/* GTM Modal */}
       {isGTMIntegration && (
-        <GTMModal 
-          isOpen={isGTMModalOpen} 
-          onClose={() => setIsGTMModalOpen(false)} 
+        <GTMModal
+          isOpen={isGTMModalOpen}
+          onClose={() => setIsGTMModalOpen(false)}
         />
       )}
     </>

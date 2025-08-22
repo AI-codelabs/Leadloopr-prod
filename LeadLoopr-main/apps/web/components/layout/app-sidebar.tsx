@@ -95,7 +95,7 @@ export function AppSidebar() {
                 <div className="w-12 h-12 rounded-full flex items-center justify-center bg-gradient-to-br from-blue-400 to-blue-600 mb-2">
                     <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#fff" /></svg>
                 </div>
-                <span className="text-2xl font-bold tracking-wide text-[#7c7c8a]">LeadLoopr</span>
+                <span className="text-2xl font-bold tracking-wide text-muted-foreground">LeadLoopr</span>
             </SidebarHeader>
 
             <SidebarContent>
@@ -106,21 +106,20 @@ export function AppSidebar() {
                                 const isActive = pathname === item.url || (item.url !== '/dashboard' && pathname?.startsWith(item.url));
                                 return (
                                     <SidebarMenuItem key={item.title}>
-                                        <Link 
-                                            href={item.url} 
+                                        <Link
+                                            href={item.url}
                                             prefetch={true}
                                             className="block w-full"
                                         >
                                             <SidebarMenuButton
-                                                className={`flex items-center gap-4 px-4 py-3 text-lg font-semibold transition-colors w-full justify-start rounded-2xl ${
-                                                    isActive
-                                                        ? 'bg-[#e9e9ee] text-gray-900'
-                                                        : 'text-gray-500 hover:bg-gray-200 hover:text-gray-900'
-                                                } ${isNavigating ? 'opacity-75' : ''}`}
+                                                className={`flex items-center gap-4 px-4 py-3 text-lg font-semibold transition-colors w-full justify-start rounded-2xl ${isActive
+                                                        ? 'bg-accent text-accent-foreground'
+                                                        : 'text-muted-foreground hover:bg-accent hover:text-accent-foreground'
+                                                    } ${isNavigating ? 'opacity-75' : ''}`}
                                                 style={{ minHeight: 56 }}
                                                 onMouseEnter={() => router.prefetch(item.url)}
                                             >
-                                                <div className="bg-white rounded-xl p-2">
+                                                <div className="bg-card rounded-xl p-2">
                                                     <item.icon className={`w-6 h-6 ${isActive ? 'stroke-[2.5]' : 'stroke-2'}`} />
                                                 </div>
                                                 <span className="leading-none">{item.title}</span>
@@ -140,10 +139,9 @@ export function AppSidebar() {
                 </div>
                 <DropdownMenu>
                     <DropdownMenuTrigger asChild>
-                        <button 
-                            className={`flex items-center gap-3 w-full p-2 rounded-2xl bg-[#e9e9ee] hover:bg-[#e0e0e7] transition-colors ${
-                                isNavigating ? 'opacity-75 cursor-not-allowed' : ''
-                            }`}
+                        <button
+                            className={`flex items-center gap-3 w-full p-2 rounded-2xl bg-accent hover:bg-accent/80 transition-colors ${isNavigating ? 'opacity-75 cursor-not-allowed' : ''
+                                }`}
                             disabled={isNavigating}
                         >
                             <div className="w-9 h-9 bg-muted rounded-lg flex items-center justify-center">
@@ -151,21 +149,21 @@ export function AppSidebar() {
                             </div>
                             <div className="flex flex-col items-start leading-none">
                                 <span className="text-xs text-muted-foreground">Account</span>
-                                <span className="text-base font-medium text-gray-900">
+                                <span className="text-base font-medium text-foreground">
                                     Settings
                                 </span>
                             </div>
-                            <ChevronDown className="w-5 h-5 ml-auto text-gray-500" />
+                            <ChevronDown className="w-5 h-5 ml-auto text-muted-foreground" />
                         </button>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="start" className="w-56">
-                        <DropdownMenuItem 
+                        <DropdownMenuItem
                             onClick={handleAccountNavigation}
                             disabled={isNavigating}
                         >
                             Account Settings
                         </DropdownMenuItem>
-                        <DropdownMenuItem 
+                        <DropdownMenuItem
                             onClick={handleSignOut}
                             disabled={isNavigating}
                         >

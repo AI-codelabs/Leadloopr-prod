@@ -45,8 +45,8 @@ export const IntegrationsList = ({ integrations }: IntegrationsListProps) => {
                             </div>
                             <div className="flex-1">
                                 <Badge variant="secondary" className="mb-2">Coming Soon</Badge>
-                                <h3 className="font-semibold text-gray-900 mb-1">More integrations coming soon</h3>
-                                <p className="text-sm text-gray-500 leading-relaxed">
+                                <h3 className="font-semibold text-foreground mb-1">More integrations coming soon</h3>
+                                <p className="text-sm text-muted-foreground leading-relaxed">
                                     We are actively working to add more incoming integrations to make your life easier. Stay tuned!
                                 </p>
                             </div>

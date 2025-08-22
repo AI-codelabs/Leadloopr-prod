@@ -8,7 +8,7 @@ export default function DashboardLayout({
 }) {
     return (
         <OrganizationCheck>
-            <div className="flex h-screen bg-white">
+            <div className="flex h-screen bg-background">
                 <AppSidebar />
                 <main className="flex-1 overflow-auto">
                     <div className="p-6">

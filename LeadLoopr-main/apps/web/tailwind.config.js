@@ -112,10 +112,14 @@ module.exports = {
 			keyframes: {
 				float: { '0%,100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-20px)' } },
 				glow: { '0%': { boxShadow: 'var(--shadow-glow)' }, '100%': { boxShadow: '0 0 60px hsl(var(--primary) / 0.6)' } },
+				marquee: { '0%': { transform: 'translateX(0)' }, '100%': { transform: 'translateX(calc(-100% - 1rem))' } },
+				'marquee-vertical': { '0%': { transform: 'translateY(0)' }, '100%': { transform: 'translateY(calc(-100% - 1rem))' } },
 			},
 			animation: {
 				float: 'float 6s ease-in-out infinite',
 				glow: 'glow 2s ease-in-out infinite alternate',
+				marquee: 'marquee var(--duration, 40s) linear infinite',
+				'marquee-vertical': 'marquee-vertical var(--duration, 40s) linear infinite',
 			},
 		},
 	},

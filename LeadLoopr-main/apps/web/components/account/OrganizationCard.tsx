@@ -39,18 +39,18 @@ export function OrganizationCard() {
                     <div className="space-y-4">
                         {/* Quick Stats */}
                         <div className="grid grid-cols-2 gap-4">
-                            <div className="flex items-center gap-2 p-3 bg-gray-50 rounded-lg">
-                                <Users className="h-4 w-4 text-gray-600" />
+                            <div className="flex items-center gap-2 p-3 bg-muted rounded-lg">
+                                <Users className="h-4 w-4 text-muted-foreground" />
                                 <div>
                                     <p className="text-sm font-medium">Members</p>
-                                    <p className="text-xs text-gray-500">Manage team access</p>
+                                    <p className="text-xs text-muted-foreground">Manage team access</p>
                                 </div>
                             </div>
-                            <div className="flex items-center gap-2 p-3 bg-gray-50 rounded-lg">
-                                <Shield className="h-4 w-4 text-gray-600" />
+                            <div className="flex items-center gap-2 p-3 bg-muted rounded-lg">
+                                <Shield className="h-4 w-4 text-muted-foreground" />
                                 <div>
                                     <p className="text-sm font-medium">Security</p>
-                                    <p className="text-xs text-gray-500">Domain verification</p>
+                                    <p className="text-xs text-muted-foreground">Domain verification</p>
                                 </div>
                             </div>
                         </div>
@@ -76,7 +76,7 @@ export function OrganizationCard() {
                         </div>
 
                         {/* Quick Info */}
-                        <div className="text-xs text-gray-500 space-y-1">
+                        <div className="text-xs text-muted-foreground space-y-1">
                             <p>• Organization ID: {organization.id}</p>
                             <p>• Created: {new Date(organization.createdAt).toLocaleDateString()}</p>
                         </div>

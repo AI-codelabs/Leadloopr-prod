@@ -198,7 +198,7 @@ export default function CRMPage() {
     const refreshLeads = async () => {
         try {
             setIsRefreshing(true);
-            
+
             // Fetch both stages and leads in parallel
             const [stagesResponse, leadsResponse] = await Promise.all([
                 fetch('/api/pipeline-stages'),
@@ -274,12 +274,12 @@ export default function CRMPage() {
 
     if (loading) {
         return (
-            <div className="min-h-screen bg-white p-6">
+            <div className="min-h-screen bg-background p-6">
                 <div className="max-w-7xl mx-auto">
                     <div className="flex items-center justify-center h-64">
                         <div className="text-center">
                             <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500 mx-auto mb-4"></div>
-                            <p className="text-gray-600">Loading leads...</p>
+                            <p className="text-foreground">Loading leads...</p>
                         </div>
                     </div>
                 </div>
@@ -289,7 +289,7 @@ export default function CRMPage() {
 
     if (error) {
         return (
-            <div className="min-h-screen bg-white p-6">
+            <div className="min-h-screen bg-background p-6">
                 <div className="max-w-7xl mx-auto">
                     <div className="flex items-center justify-center h-64">
                         <div className="text-center">
@@ -304,12 +304,12 @@ export default function CRMPage() {
 
     if (leads.length === 0) {
         return (
-            <div className="min-h-screen bg-white p-6">
+            <div className="min-h-screen bg-background p-6">
                 <div className="max-w-7xl mx-auto">
                     <div className="flex items-center justify-between mb-6">
                         <div>
-                            <h1 className="text-2xl font-bold text-gray-900">CRM</h1>
-                            <p className="text-gray-600 mt-1">Manage and track your leads in a comprehensive view</p>
+                            <h1 className="text-2xl font-bold text-foreground">CRM</h1>
+                            <p className="text-muted-foreground mt-1">Manage and track your leads in a comprehensive view</p>
                         </div>
                         <div className="flex items-center gap-3">
                             <Button
@@ -319,8 +319,8 @@ export default function CRMPage() {
                                 <Download className="w-4 h-4" />
                                 Export CSV
                             </Button>
-                            <Button 
-                                className='bg-orange-600 hover:bg-orange-700 text-white' 
+                            <Button
+                                className='bg-orange-600 hover:bg-orange-700 text-white'
                                 onClick={refreshLeads}
                                 disabled={isRefreshing}
                             >
@@ -330,7 +330,7 @@ export default function CRMPage() {
                     </div>
                     <div className="flex items-center justify-center h-64">
                         <div className="text-center">
-                            <p className="text-gray-600">No leads found.</p>
+                            <p className="text-muted-foreground">No leads found.</p>
                         </div>
                     </div>
                 </div>
@@ -339,12 +339,12 @@ export default function CRMPage() {
     }
 
     return (
-        <div className="min-h-screen bg-white p-6">
+        <div className="min-h-screen bg-background p-6">
             <div className="max-w-7xl mx-auto">
                 <div className="flex items-center justify-between mb-6">
                     <div>
-                        <h1 className="text-2xl font-bold text-gray-900">CRM</h1>
-                        <p className="text-gray-600 mt-1">Manage and track your leads in a comprehensive view</p>
+                        <h1 className="text-2xl font-bold text-foreground">CRM</h1>
+                        <p className="text-muted-foreground mt-1">Manage and track your leads in a comprehensive view</p>
                     </div>
                     <div className="flex items-center gap-3">
                         <Button
@@ -354,8 +354,8 @@ export default function CRMPage() {
                             <Download className="w-4 h-4" />
                             Export CSV
                         </Button>
-                        <Button 
-                            className='bg-orange-600 hover:bg-orange-700 text-white' 
+                        <Button
+                            className='bg-orange-600 hover:bg-orange-700 text-white'
                             onClick={refreshLeads}
                             disabled={isRefreshing}
                         >
@@ -363,11 +363,11 @@ export default function CRMPage() {
                         </Button>
                     </div>
                 </div>
-                <LeadsDataTable 
-                    data={leads} 
+                <LeadsDataTable
+                    data={leads}
                     columns={columns}
                     refreshLeads={refreshLeads}
-                    onRowClick={lead => setSelectedCard(leadToCard(lead))} 
+                    onRowClick={lead => setSelectedCard(leadToCard(lead))}
                 />
                 <LeadDetailDialog
                     refreshLeads={refreshLeads}

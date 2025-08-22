@@ -118,9 +118,9 @@ export const PipelineStagesEditor: React.FC<PipelineStagesEditorProps> = ({
                     Edit Stages
                 </Button>
             ) : (
-                <div className="bg-white border border-gray-200 rounded-lg p-4 shadow-lg">
+                <div className="bg-card border border-border rounded-lg p-4 shadow-lg">
                     <div className="flex items-center justify-between mb-4">
-                        <h3 className="text-lg font-semibold text-gray-900">
+                        <h3 className="text-lg font-semibold text-foreground">
                             Edit Pipeline Stages
                         </h3>
                         <Button
@@ -144,7 +144,7 @@ export const PipelineStagesEditor: React.FC<PipelineStagesEditorProps> = ({
                                 placeholder="Proposal&#10;Qualified&#10;Sales Contact&#10;Lost&#10;Won"
                                 className="min-h-[120px]"
                             />
-                            <p className="text-xs text-gray-500 mt-1">
+                            <p className="text-xs text-muted-foreground mt-1">
                                 Enter each stage name on a separate line. The order will be preserved.
                             </p>
                         </div>

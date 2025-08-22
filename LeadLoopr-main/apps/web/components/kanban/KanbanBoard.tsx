@@ -5,7 +5,7 @@ import { KanbanColumn } from './KanbanColumn';
 import { LeadDetailDialog } from './LeadDetailDialog';
 import { AddLeadDialog } from './AddLeadDialog';
 import { Button } from '@/components/ui/button';
-import { Download, Plus , RefreshCw} from 'lucide-react';
+import { Download, Plus, RefreshCw } from 'lucide-react';
 import { Card, Column, cardToDatabaseLead, databaseLeadToCard } from './types';
 import {
     DndContext,
@@ -71,7 +71,7 @@ export const KanbanBoard: React.FC = () => {
         })
     );
 
-   // Fetch stages from API
+    // Fetch stages from API
     const fetchStages = async () => {
         try {
             setIsLoading(true);
@@ -121,66 +121,66 @@ export const KanbanBoard: React.FC = () => {
             setIsLoading(false);
         }
     };
-   
 
-//     const fetchStages = async () => {
-//     try {
-//         setIsLoading(true);
-//         setError(null);
 
-//         // 🔧 Simulated dummy response data
-//         const dummyStages: PipelineStage[] = [
-//             // { id: "stage_open", name: "Open", position: 0, color: "bg-gray-400" },
-//             { id: "stage_qualified", name: "Qualified", position: 1, color: "bg-yellow-500" },
-//             { id: "stage_won", name: "Won", position: 2, color: "bg-green-500" },
-//             { id: "stage_lost", name: "Lost", position: 3, color: "bg-red-500" },
-//        ]
+    //     const fetchStages = async () => {
+    //     try {
+    //         setIsLoading(true);
+    //         setError(null);
 
-//         const qualifications = ['QUALIFIED', 'UNQUALIFIED', 'NEEDS_REVIEW'];
-//         const priorities = ['LOW', 'MEDIUM', 'HIGH'];
+    //         // 🔧 Simulated dummy response data
+    //         const dummyStages: PipelineStage[] = [
+    //             // { id: "stage_open", name: "Open", position: 0, color: "bg-gray-400" },
+    //             { id: "stage_qualified", name: "Qualified", position: 1, color: "bg-yellow-500" },
+    //             { id: "stage_won", name: "Won", position: 2, color: "bg-green-500" },
+    //             { id: "stage_lost", name: "Lost", position: 3, color: "bg-red-500" },
+    //        ]
 
-//         const dummyLeads: any[] = Array.from({ length: 20 }).map((_, i) => {
-//             const stage = dummyStages[Math.floor(Math.random() * dummyStages.length)];
-//             const qual = qualifications[Math.floor(Math.random() * qualifications.length)];
-//             const prio = priorities[Math.floor(Math.random() * priorities.length)];
+    //         const qualifications = ['QUALIFIED', 'UNQUALIFIED', 'NEEDS_REVIEW'];
+    //         const priorities = ['LOW', 'MEDIUM', 'HIGH'];
 
-//             return {
-//                 id: `lead_${i + 1}`,
-//                 name: `Lead ${i + 1}`,
-//                 email: `lead${i + 1}@example.com`,
-//                 phone: `99999${10000 + i}`,
-//                 currentStageId: stage.id,
-//                 qualification: qual,
-//                 priority: prio,
-//                 value: Math.random() > 0.4 ? Math.floor(Math.random() * 5000 + 500) : null,
-//                 tags: Math.random() > 0.5 ? ['demo', 'imported'] : [],
-//                 createdAt: new Date(Date.now() - i * 86400000).toISOString(),
-//             };
-//         });
+    //         const dummyLeads: any[] = Array.from({ length: 20 }).map((_, i) => {
+    //             const stage = dummyStages[Math.floor(Math.random() * dummyStages.length)];
+    //             const qual = qualifications[Math.floor(Math.random() * qualifications.length)];
+    //             const prio = priorities[Math.floor(Math.random() * priorities.length)];
 
-//         // 🔁 Keep your existing logic — just use dummy data instead of fetch
-//         const stages = dummyStages;
-//         const leads = dummyLeads;
+    //             return {
+    //                 id: `lead_${i + 1}`,
+    //                 name: `Lead ${i + 1}`,
+    //                 email: `lead${i + 1}@example.com`,
+    //                 phone: `99999${10000 + i}`,
+    //                 currentStageId: stage.id,
+    //                 qualification: qual,
+    //                 priority: prio,
+    //                 value: Math.random() > 0.4 ? Math.floor(Math.random() * 5000 + 500) : null,
+    //                 tags: Math.random() > 0.5 ? ['demo', 'imported'] : [],
+    //                 createdAt: new Date(Date.now() - i * 86400000).toISOString(),
+    //             };
+    //         });
 
-//         const newColumns: Column[] = stages.map((stage) => {
-//             const stageLeads = leads.filter((lead) => lead.currentStageId === stage.id);
-//             const cards: Card[] = stageLeads.map((lead) => databaseLeadToCard(lead));
-//             return {
-//                 id: stage.id,
-//                 title: stage.name,
-//                 color: stage.color || getStageColor(stage.position),
-//                 cards: cards
-//             };
-//         });
+    //         // 🔁 Keep your existing logic — just use dummy data instead of fetch
+    //         const stages = dummyStages;
+    //         const leads = dummyLeads;
 
-//         setColumns(newColumns);
-//     } catch (error) {
-//         console.error('Error fetching pipeline data:', error);
-//         setError('Failed to load pipeline data');
-//     } finally {
-//         setIsLoading(false);
-//     }
-// };
+    //         const newColumns: Column[] = stages.map((stage) => {
+    //             const stageLeads = leads.filter((lead) => lead.currentStageId === stage.id);
+    //             const cards: Card[] = stageLeads.map((lead) => databaseLeadToCard(lead));
+    //             return {
+    //                 id: stage.id,
+    //                 title: stage.name,
+    //                 color: stage.color || getStageColor(stage.position),
+    //                 cards: cards
+    //             };
+    //         });
+
+    //         setColumns(newColumns);
+    //     } catch (error) {
+    //         console.error('Error fetching pipeline data:', error);
+    //         setError('Failed to load pipeline data');
+    //     } finally {
+    //         setIsLoading(false);
+    //     }
+    // };
 
     useEffect(() => {
         fetchStages();
@@ -621,7 +621,7 @@ export const KanbanBoard: React.FC = () => {
                     <div className="flex items-center justify-center h-64">
                         <div className="text-center">
                             <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500 mx-auto mb-4"></div>
-                            <p className="text-gray-600">Loading pipeline data...</p>
+                            <p className="text-muted-foreground">Loading pipeline data...</p>
                         </div>
                     </div>
                 </div>
@@ -657,8 +657,8 @@ export const KanbanBoard: React.FC = () => {
                     {/* Header */}
                     <div className="flex items-center justify-between mb-6">
                         <div>
-                            <h1 className="text-2xl font-bold text-gray-900">Lead Pipeline</h1>
-                            <p className="text-gray-600 mt-1">Manage and track your leads through the sales pipeline</p>
+                            <h1 className="text-2xl font-bold text-foreground">Lead Pipeline</h1>
+                            <p className="text-muted-foreground mt-1">Manage and track your leads through the sales pipeline</p>
                         </div>
                         <div className="flex items-center gap-3">
                             <Button
@@ -669,15 +669,15 @@ export const KanbanBoard: React.FC = () => {
                                 Export CSV
                             </Button>
 
-                            <Button 
-                                className='bg-orange-600 hover:bg-orange-700 text-white' 
+                            <Button
+                                className='bg-orange-600 hover:bg-orange-700 text-white'
                                 onClick={refreshLeads}
                                 disabled={isRefreshing}
                             >
                                 <RefreshCw className={`w-4 h-4 ${isRefreshing ? 'animate-spin' : ''}`} />
                             </Button>
                         </div>
-                        
+
                     </div>
 
                     {/* Kanban Board */}
@@ -698,7 +698,7 @@ export const KanbanBoard: React.FC = () => {
                         <div className="flex-shrink-0 w-80">
                             <Button
                                 variant="outline"
-                                className="w-full h-8 rounded-full bg-card hover:bg-gray-50 border-dotted border-gray-300 text-gray-500"
+                                className="w-full h-8 rounded-full bg-card hover:bg-accent border-dotted border-border text-muted-foreground"
                                 onClick={handleAddStage}
                             >
                                 <Plus className="w-4 h-4 mr-2" />
@@ -711,10 +711,10 @@ export const KanbanBoard: React.FC = () => {
                 {/* Drag Overlay */}
                 <DragOverlay>
                     {activeCard ? (
-                        <div className="bg-white border rounded-lg p-4 shadow-lg opacity-90">
+                        <div className="bg-card border rounded-lg p-4 shadow-lg opacity-90">
                             <div className="font-medium text-sm">{activeCard.title}</div>
                             {activeCard.description && (
-                                <div className="text-xs text-gray-600 mt-1">{activeCard.description}</div>
+                                <div className="text-xs text-muted-foreground mt-1">{activeCard.description}</div>
                             )}
                         </div>
                     ) : null}

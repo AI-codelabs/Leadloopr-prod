@@ -10,7 +10,7 @@ const Sidebar = React.forwardRef<
     <div
         ref={ref}
         className={cn(
-            "flex h-full w-60 flex-col bg-[#f7f7f8]",
+            "flex h-full w-60 flex-col bg-muted/30",
             className
         )}
         {...props}
@@ -109,7 +109,7 @@ const SidebarMenuButton = React.forwardRef<
     <button
         ref={ref}
         className={cn(
-            "flex w-full items-center gap-4 rounded-2xl px-4 py-3 text-base font-medium transition-colors hover:bg-gray-200 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-100",
+            "flex w-full items-center gap-4 rounded-2xl px-4 py-3 text-base font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:outline-none focus:ring-2 focus:ring-ring",
             className
         )}
         {...props}

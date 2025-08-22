@@ -83,7 +83,7 @@ export const LeadCard = ({ card, onClick }: LeadCardProps) => {
                     <Badge
                         key={index}
                         variant="outline"
-                        className="text-2xs px-1.5 py-0.5 rounded-full border-gray-200 text-gray-600"
+                        className="text-2xs px-1.5 py-0.5 rounded-full border-border text-muted-foreground"
                     >
                         {tag}
                     </Badge>
@@ -91,7 +91,7 @@ export const LeadCard = ({ card, onClick }: LeadCardProps) => {
                 {remainingCount > 0 && (
                     <Badge
                         variant="outline"
-                        className="text-2xs px-1.5 py-0.5 rounded-full border-gray-200 text-gray-500"
+                        className="text-2xs px-1.5 py-0.5 rounded-full border-border text-muted-foreground"
                     >
                         +{remainingCount}
                     </Badge>
@@ -145,7 +145,7 @@ export const LeadCard = ({ card, onClick }: LeadCardProps) => {
                                 <Badge
                                     key={index}
                                     variant="outline"
-                                    className="text-[10px] px-1 py-0.5 rounded-full border-gray-200 text-gray-600 h-5"
+                                    className="text-[10px] px-1 py-0.5 rounded-full border-border text-muted-foreground h-5"
                                 >
                                     {tag}
                                 </Badge>
@@ -153,7 +153,7 @@ export const LeadCard = ({ card, onClick }: LeadCardProps) => {
                             {card.tags.length > 2 && (
                                 <Badge
                                     variant="outline"
-                                    className="text-[10px] px-1 py-0.5 rounded-full border-gray-200 text-gray-500 h-5"
+                                    className="text-[10px] px-1 py-0.5 rounded-full border-border text-muted-foreground h-5"
                                 >
                                     +{card.tags.length - 2}
                                 </Badge>

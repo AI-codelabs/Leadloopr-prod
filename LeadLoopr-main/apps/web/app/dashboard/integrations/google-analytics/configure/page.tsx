@@ -46,7 +46,7 @@ export default function GoogleAnalyticsConfigurePage() {
   const handleInputChange = (field: keyof FormData, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }));
     setError('');
-    
+
     // Clear specific field validation error
     if (validationErrors[field]) {
       setValidationErrors(prev => {
@@ -77,7 +77,7 @@ export default function GoogleAnalyticsConfigurePage() {
     }
 
     setValidationErrors(errors);
-    
+
     if (Object.keys(errors).length > 0) {
       setError('Please fix the validation errors below');
       return false;
@@ -111,7 +111,7 @@ export default function GoogleAnalyticsConfigurePage() {
       }
 
       setSuccess(true);
-      
+
       // Redirect to integrations page after 3 seconds
       setTimeout(() => {
         router.push('/dashboard/integrations?success=ga4_configured');
@@ -141,13 +141,13 @@ export default function GoogleAnalyticsConfigurePage() {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="bg-gray-50 p-4 rounded-lg mb-4 space-y-2">
+            <div className="bg-muted p-4 rounded-lg mb-4 space-y-2">
               <div className="flex justify-between text-sm">
-                <span className="text-gray-600">Integration:</span>
+                <span className="text-muted-foreground">Integration:</span>
                 <span className="font-medium">{formData.integrationName}</span>
               </div>
               <div className="flex justify-between text-sm">
-                <span className="text-gray-600">Measurement ID:</span>
+                <span className="text-muted-foreground">Measurement ID:</span>
                 <span className="font-medium">{formData.measurementId}</span>
               </div>
             </div>
@@ -175,17 +175,17 @@ export default function GoogleAnalyticsConfigurePage() {
           </Button>
 
           <div className="text-center">
-            <h1 className="text-3xl font-bold text-gray-900 mb-2">
+            <h1 className="text-3xl font-bold text-foreground mb-2">
               Configure Google Analytics 4
             </h1>
-            <p className="text-gray-600 mb-8">
+            <p className="text-muted-foreground mb-8">
               Complete your GA4 integration by providing the required details below
             </p>
           </div>
         </div>
 
         {/* Instructions Card */}
-        <Card className="mb-8 bg-blue-50 border-blue-200">
+        <Card className="mb-8 bg-accent border-border">
           <CardContent className="p-6">
             <div className="flex items-start gap-3">
               <Info className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" />
@@ -199,9 +199,9 @@ export default function GoogleAnalyticsConfigurePage() {
                   <li>Go to <strong>Admin → Data Streams → Measurement Protocol API secrets</strong></li>
                   <li>Create a new API secret and copy the secret value</li>
                 </ol>
-                <a 
-                  href="https://support.google.com/analytics/answer/9310895" 
-                  target="_blank" 
+                <a
+                  href="https://support.google.com/analytics/answer/9310895"
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center text-blue-600 hover:text-blue-800 text-sm font-medium"
                 >
@@ -308,12 +308,12 @@ export default function GoogleAnalyticsConfigurePage() {
         )}
 
         {/* Action Bar */}
-        <div className="flex justify-between items-center bg-white p-6 rounded-lg border">
+        <div className="flex justify-between items-center bg-card p-6 rounded-lg border">
           <div>
-            <h3 className="font-semibold text-gray-900 mb-1">
+            <h3 className="font-semibold text-foreground mb-1">
               Ready to Configure?
             </h3>
-            <p className="text-sm text-gray-600">
+            <p className="text-sm text-muted-foreground">
               Make sure all fields are filled correctly before proceeding
             </p>
           </div>
@@ -344,12 +344,12 @@ export default function GoogleAnalyticsConfigurePage() {
         </div>
 
         {/* Help Section */}
-        <Card className="mt-8 bg-gray-50">
+        <Card className="mt-8 bg-muted">
           <CardContent className="p-6">
-            <h3 className="font-medium text-gray-900 mb-3">
+            <h3 className="font-medium text-foreground mb-3">
               Need Help?
             </h3>
-            <div className="grid md:grid-cols-2 gap-4 text-sm text-gray-600">
+            <div className="grid md:grid-cols-2 gap-4 text-sm text-muted-foreground">
               <div className="space-y-1">
                 <p>• Make sure you have admin access to your GA4 property</p>
                 <p>• The Measurement ID should start with "G-" followed by 10 characters</p>

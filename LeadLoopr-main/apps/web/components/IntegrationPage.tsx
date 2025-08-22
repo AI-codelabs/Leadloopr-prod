@@ -10,13 +10,13 @@ import { integrations } from '@/components/integrations/integrations-data';
 
 
 const useToast = () => ({
-    toast: ({ title, description, variant }: { title: string; description: string; variant?: string }) => {
-        console.log(`[${variant || "info"}] ${title}: ${description}`);
-    }
+  toast: ({ title, description, variant }: { title: string; description: string; variant?: string }) => {
+    console.log(`[${variant || "info"}] ${title}: ${description}`);
+  }
 });
 
 export default function IntegrationsPage() {
-    
+
   const searchParams = useSearchParams();
   const { toast } = useToast();
 
@@ -30,14 +30,14 @@ export default function IntegrationsPage() {
         description: "Your Google Ads integration has been successfully connected.",
         variant: "default",
       });
-      
+
       // Clean up URL
       window.history.replaceState({}, '', '/integrations');
     }
 
     if (error) {
       let errorMessage = "An error occurred while connecting the integration.";
-      
+
       switch (error) {
         case 'oauth_denied':
           errorMessage = "OAuth access was denied. Please try again and grant the necessary permissions.";
@@ -64,7 +64,7 @@ export default function IntegrationsPage() {
         description: errorMessage,
         variant: "destructive",
       });
-      
+
       // Clean up URL
       window.history.replaceState({}, '', '/integrations');
     }
@@ -74,12 +74,12 @@ export default function IntegrationsPage() {
     <div className="container mx-auto px-4 py-8">
       <div className="max-w-4xl mx-auto">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">Integrations</h1>
-          <p className="text-gray-600">
+          <h1 className="text-3xl font-bold text-foreground mb-2">Integrations</h1>
+          <p className="text-muted-foreground">
             Connect your favorite tools and platforms to streamline your workflow.
           </p>
         </div>
-        
+
         <IntegrationsList integrations={integrations} />
       </div>
     </div>
