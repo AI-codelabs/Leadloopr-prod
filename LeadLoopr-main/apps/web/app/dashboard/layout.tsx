@@ -11,9 +11,7 @@ export default function DashboardLayout({
             <div className="flex h-screen bg-background">
                 <AppSidebar />
                 <main className="flex-1 overflow-auto">
-                    <div className="p-6">
-                        {children}
-                    </div>
+                    {children}
                 </main>
             </div>
         </OrganizationCheck>

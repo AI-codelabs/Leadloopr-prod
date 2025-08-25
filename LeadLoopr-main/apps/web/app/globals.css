@@ -156,6 +156,10 @@
         @apply glass rounded-2xl;
     }
 
+    .bg-gradient-primary {
+        background: var(--gradient-primary);
+    }
+
     .glow {
         box-shadow: var(--shadow-glow);
     }
@@ -269,6 +273,7 @@
         from {
             transform: translateX(0);
         }
+
         to {
             transform: translateX(calc(-100% - var(--gap, 1rem)));
         }
@@ -278,6 +283,7 @@
         from {
             transform: translateY(0);
         }
+
         to {
             transform: translateY(calc(-100% - var(--gap, 1rem)));
         }
